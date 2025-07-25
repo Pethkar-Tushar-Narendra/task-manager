@@ -101,12 +101,6 @@ mysql -u your_username -p your_database < tasks.sql
 
 ---
 
-## 📸 Screenshots
-
-(image.png)
-
----
-
 ## 🙋‍♂️ Developed By
 
 **Tushar Pethkar**  
