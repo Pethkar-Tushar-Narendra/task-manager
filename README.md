@@ -1,41 +1,120 @@
-# ✅ Task Manager with Laravel Jetstream & AJAX
 
-## Features
-- Jetstream Livewire Authentication (Login / Register / Logout)
-- Task CRUD using jQuery AJAX (No page reloads)
-- Bootstrap modals for Add/Edit Task
-- Tasks visible only to the logged-in user
+# ✅ Task Manager with Laravel Jetstream & jQuery AJAX
 
-## Setup Instructions
+A simple Task Manager web application built with **Laravel 10**, **Jetstream (Livewire)** for authentication, and **jQuery AJAX** for a seamless CRUD experience without page reloads.
 
-1. Clone the repository:
+---
+
+## ✨ Features
+
+- ✅ **User Authentication** – Login / Register / Logout via Laravel Jetstream
+- 📝 **Task Management (CRUD)** – Add, edit, delete, and view tasks
+- 🔁 **Toggle Task Status** – Mark tasks as `Pending` or `Done`
+- 🚀 **AJAX-powered UI** – No page reloads, all actions via jQuery AJAX
+- 👤 **User Scoped Tasks** – Each user sees only their own tasks
+- 🧼 **Bootstrap UI** – Clean and responsive UI with modals
+
+---
+
+## 🛠 Tech Stack
+
+- **Laravel 10+**
+- **Laravel Jetstream (Livewire)**
+- **MySQL**
+- **Bootstrap 5**
+- **jQuery (AJAX)**
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/task-manager.git
 cd task-manager
-Install dependencies:
+```
 
+### 2. Install PHP Dependencies
+```bash
 composer install
+```
+
+### 3. Install Frontend Dependencies
+```bash
 npm install && npm run dev
+```
 
-Set DB credentials
+### 4. Configure Environment
+- Copy `.env.example` to `.env`
+```bash
+cp .env.example .env
+```
+- Set your database credentials:
+```env
+DB_DATABASE=your_db
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-Run:
+### 5. Generate App Key & Run Migrations
+```bash
 php artisan key:generate
 php artisan migrate
+```
 
-Start the server:
+### 6. Start Development Server
+```bash
 php artisan serve
-Done 🎉
-Visit http://127.0.0.1:8000
+```
 
-SQL File
-tasks.sql is included for importing the tasks table structure.
+Visit: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-Developed By
-Tushar Pethkar
+---
 
-yaml
-Copy
-Edit
+## 🧪 How to Use
 
+1. **Register/Login**
+2. Redirects to the **Dashboard**
+3. Click **Manage Tasks** to:
+   - ➕ Add Task via modal (AJAX)
+   - ✏️ Edit Task via modal (AJAX)
+   - ❌ Delete Task (AJAX)
+   - 🔁 Toggle Task Status (AJAX)
+
+All actions are done **without page reloads** using jQuery AJAX.
+
+---
+
+## 🛢 Database
+
+- The `tasks` table is used to store task data.
+- A `tasks.sql` export is provided for structure reference.
+
+---
+
+## 📁 SQL File
+
+If needed, import using:
+```bash
+mysql -u your_username -p your_database < tasks.sql
+```
+
+---
+
+## 📸 Screenshots
+
+(image.png)
+
+---
+
+## 🙋‍♂️ Developed By
+
+**Tushar Pethkar**  
+[Nashik, Maharashtra, India]
+
+---
+
+## 📬 Contact
+
+📧 pethkartusharnarendra@gmail.com  
 ---
