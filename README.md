@@ -14,29 +14,16 @@ git clone https://github.com/your-username/task-manager.git
 cd task-manager
 Install dependencies:
 
-bash
-Copy
-Edit
 composer install
 npm install && npm run dev
-Configure .env file and DB:
-
-Copy .env.example → .env
 
 Set DB credentials
 
 Run:
-
-bash
-Copy
-Edit
 php artisan key:generate
 php artisan migrate
-Start the server:
 
-bash
-Copy
-Edit
+Start the server:
 php artisan serve
 Done 🎉
 Visit http://127.0.0.1:8000
