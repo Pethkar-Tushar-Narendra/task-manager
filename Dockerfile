@@ -41,7 +41,7 @@ RUN chown -R www-data:www-data /var/www \
 RUN php artisan storage:link || true
 
 # Expose port
-EXPOSE 8000
+EXPOSE 10000
 
 # Start application with database migration
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
