@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.0
 # Use official PHP image
 FROM php:8.2-fpm
 
@@ -11,9 +12,10 @@ RUN apt-get update && apt-get install -y \
     zip unzip git curl libzip-dev \
     npm nodejs \
     libpq-dev \
-    mariadb-client
+    mariadb-client \
+    && apt-get clean
 
-# Install PHP extensions
+# Install PHP extensions (for both MySQL and PostgreSQL support)
 RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath gd zip
 
 # Install Composer
@@ -22,23 +24,24 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy app files
-COPY . /var/www
+# Copy application code
+COPY . .
 
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Install JS dependencies and build assets
+# Install Node.js dependencies and build assets
 RUN npm install && npm run build
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www
+# Set permissions for Laravel
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage
 
-# Create storage link
+# Create storage symlink
 RUN php artisan storage:link || true
 
 # Expose port
 EXPOSE 8000
 
-# Start app
+# Start application with database migration
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
